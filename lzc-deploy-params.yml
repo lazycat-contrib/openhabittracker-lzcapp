@@ -1,0 +1,30 @@
+params:
+  - id: oht_pw
+    type: secret
+    name: "管理员密码"
+    description: "OpenHabitTracker 管理员账号 admin 的密码（已预置随机值，部署后请尽快修改）"
+    default_value: "a3f9c2d17e8b40569d2e"
+    optional: false
+
+  - id: admin_email
+    type: string
+    name: "管理员邮箱"
+    description: "OpenHabitTracker 管理员账号的邮箱地址"
+    default_value: "admin@example.com"
+    optional: false
+
+locales:
+  zh:
+    admin_email:
+      name: "管理员邮箱"
+      description: "OpenHabitTracker 管理员账号的邮箱地址"
+    oht_pw:
+      name: "管理员密码"
+      description: "OpenHabitTracker 管理员账号 admin 的密码（已预置随机值，部署后请尽快修改）"
+  en:
+    admin_email:
+      name: "Admin email"
+      description: "Email address for the OpenHabitTracker admin account"
+    oht_pw:
+      name: "Admin password"
+      description: "Password for the OpenHabitTracker admin account (pre-filled with a random value, change it after first login)"

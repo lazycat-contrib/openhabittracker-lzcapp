@@ -1,0 +1,9 @@
+update:
+  version_source:
+    type: image
+    image: openhabittracker
+    tag_regex: "^v?[0-9]+[.][0-9]+[.][0-9]+$"
+  allow_downgrade: false
+build:
+  toolchains:
+    - kind: docker

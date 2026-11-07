@@ -1,0 +1,37 @@
+application:
+  subdomain: openhabittracker
+  multi_instance: false
+  # 应用有完整账号体系（ASP.NET Identity，首启按环境变量自动建号），
+  # 由自身登录页鉴权，按 papra/servas 判例使用 public_path。
+  public_path:
+    - /
+  upstreams:
+    - location: /package-licenses/
+      backend: file:///lzcapp/pkg/content/licenses/
+    - location: /
+      backend: http://openhabittracker:8080/
+services:
+  openhabittracker:
+    # upstream: jinjinov/openhabittracker:1.2.5
+    image: docker.1ms.run/jinjinov/openhabittracker:1.2.5
+    environment:
+      - TZ=Asia/Shanghai
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_HTTP_PORTS=8080
+      - AppSettings__UserName=admin
+      - AppSettings__Email={{ .U.admin_email }}
+      - AppSettings__Password={{PASSWORD_oht_pw}}
+      - AppSettings__JwtSecret={{ printf "%x" (stable_secret "oht_jwt") }}
+    binds:
+      - /lzcapp/var/data:/app/.OpenHabitTracker
+usage: |
+  OpenHabitTracker 是一个开源的习惯 / 任务 / 笔记追踪应用，
+  支持时间记录、日历视图、统计报表与数据备份。
+
+  使用方法：
+  1. 管理员账号为 admin，密码使用部署参数中预置的随机值，登录后请立即修改。
+  2. 数据（SQLite 数据库与备份）存放在 /lzcapp/var/data。
+
+  说明：
+  - 本包未做实机验证，功能以官方文档为准：https://github.com/Jinjinov/OpenHabitTracker
+  - 应用自带账号体系并以自身登录页鉴权（public_path 直连）。

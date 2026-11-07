@@ -1,0 +1,18 @@
+package: community.lazycat.app.openhabittracker
+name: OpenHabitTracker
+version: 1.2.5
+description: "Track habits, tasks and notes with time tracking, calendar views and statistics."
+min_os_version: "1.5.0"
+homepage: https://github.com/Jinjinov/OpenHabitTracker
+author: Jinjinov
+license: GPL-3.0
+permissions:
+  required:
+    - net.internet
+locales:
+  zh:
+    name: OpenHabitTracker
+    description: "习惯、任务与笔记追踪：含时间记录、日历视图与统计报表。"
+  en:
+    name: OpenHabitTracker
+    description: "Track habits, tasks and notes with time tracking, calendar views and statistics."
